@@ -43,11 +43,13 @@ d3.csv(path).then(function(newsData, err) {
     // ==============================
     var xLinearScale = d3.scaleLinear()
       .domain([8.5, d3.max(newsData, d => d.poverty)])
-      .range([0, width]);
+      .range([0, width])
+      .nice();
 
     var yLinearScale = d3.scaleLinear()
       .domain([3.5, d3.max(newsData, d => d.healthcare)])
-      .range([height, 0]);
+      .range([height, 0])
+      .nice();
 
     // Step 3: Create axis functions
     // ==============================
@@ -120,7 +122,7 @@ d3.csv(path).then(function(newsData, err) {
     // Create axes labels
     chartGroup.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 0 - (margin.left / 2 + 2))
+      .attr("y", 0 - ((margin.left / 2) + 2))
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .attr("class", "axisText")
