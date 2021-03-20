@@ -21,3 +21,19 @@ var svg = d3.select("#scatter")
 
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+// Import Data
+var path = 'assets/data/data.csv'
+d3.csv(path).then(function(newsData, err) {
+    if (err) throw err;
+
+    // Step 1: Parse Data/Cast as numbers
+    // ==============================
+    newsData.forEach(function(data) {
+      data.age = +data.age;
+      data.poverty = +data.poverty;
+      data.healthcare = +data.healthcare;
+      data.smokes= +data.smokes;
+      data.income = +data.income;
+      console.log(data);
+    });
