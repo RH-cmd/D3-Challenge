@@ -74,7 +74,7 @@ d3.csv(path).then(function(newsData, err) {
     .attr("cx", d => xLinearScale(d.poverty))
     .attr("cy", d => yLinearScale(d.healthcare))
     .attr("r", "10")
-    .attr("fill", "pink")
+    .attr("fill", "lightblue")
     .attr("stroke-width", "1")
     .attr("stroke", "black")
     .attr("opacity", ".5");
