@@ -42,12 +42,12 @@ d3.csv(path).then(function(newsData, err) {
     // Step 2: Create scale functions
     // ==============================
     var xLinearScale = d3.scaleLinear()
-      .domain([8.5, d3.max(newsData, d => d.poverty)])
+      .domain([d3.min(newsData, d => d.poverty), d3.max(newsData, d => d.poverty)])
       .range([0, width])
       .nice();
 
     var yLinearScale = d3.scaleLinear()
-      .domain([3.5, d3.max(newsData, d => d.healthcare)])
+      .domain([d3.min(newsData, d => d.healthcare), d3.max(newsData, d => d.healthcare)])
       .range([height, 0])
       .nice();
 
@@ -77,7 +77,7 @@ d3.csv(path).then(function(newsData, err) {
     .attr("fill", "pink")
     .attr("stroke-width", "1")
     .attr("stroke", "black")
-    .attr("opacity", ".6");
+    .attr("opacity", ".5");
 
     chartGroup.select("g")
     .selectAll("circle")
@@ -99,7 +99,7 @@ d3.csv(path).then(function(newsData, err) {
     var toolTip = d3.tip()
       .select('body')
       .append('div')
-      .attr("class", "tooltip")
+      .attr("class", "d3-tip")
       .offset([80, -60])
       .html(function(d) {
         return (`<br>Poverty: ${d.poverty}<br>Healthcare: ${d.healthcare}`);
@@ -122,15 +122,15 @@ d3.csv(path).then(function(newsData, err) {
     // Create axes labels
     chartGroup.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 0 - ((margin.left / 2) + 2))
-      .attr("x", 0 - (height / 2))
+      .attr("y", 0 - margin.left + 40)
+      .attr("x", 0 - (height / 1.5))
       .attr("dy", "1em")
-      .attr("class", "axisText")
+      .attr("class", "aText")
       .text("Lacks Healthcare (%)");
 
     chartGroup.append("text")
-      .attr("transform", `translate(${width / 2}, ${height + margin.top + 13})`)
-      .attr("class", "axisText")
+      .attr("transform", `translate(${width / 1.5}, ${height + margin.top + 40})`)
+      .attr("class", "aText")
       .text("Poverty (%)");
   }).catch(function(error) {
     console.log(error);
