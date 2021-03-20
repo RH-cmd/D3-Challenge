@@ -31,11 +31,11 @@ d3.csv(path).then(function(newsData, err) {
     // Step 1: Parse Data/Cast as numbers
     // ==============================
     newsData.forEach(function(data) {
-      data.age = +data.age;
+      // data.age = +data.age;
       data.poverty = +data.poverty;
       data.healthcare = +data.healthcare;
-      data.smokes= +data.smokes;
-      data.income = +data.income;
+      // data.smokes= +data.smokes;
+      // data.income = +data.income;
       console.log(data);
     });
 
