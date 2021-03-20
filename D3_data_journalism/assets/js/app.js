@@ -17,7 +17,8 @@ var height = svgHeight - margin.top - margin.bottom;
 var svg = d3.select("#scatter")
   .append("svg")
   .attr("width", svgWidth)
-  .attr("height", svgHeight);
+  .attr("height", svgHeight)
+  .classed('chart', true);
 
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
